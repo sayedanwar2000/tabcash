@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tabcash/views/splash_screen/splash.dart';
 
-import 'views/layout/layout_screen.dart';
+// import 'views/layout/layout_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: LayoutScreen(),
+      home: const SplashScreen(),
     );
   }
 }
