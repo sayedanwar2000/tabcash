@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import '../../../views/drawer_header/drawer_header.dart';
 import '../network/local/cache_helper/cache.dart';
@@ -234,54 +233,6 @@ Widget myDivider({
       height: 2.0,
       color: Colors.grey[300],
     );
-
-Widget defaultDropdownSearch({
-  required var items,
-  required onChang,
-  selected,
-  bool isSearch = false,
-  double height = 350,
-  dynamic colorBorderFocuse,
-  dynamic colorBorder,
-  validat,
-}) =>
-    DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        border: Border.all(
-          color: Colors.grey,
-        ),
-      ),
-      child: DropdownSearch<String>(
-        popupProps: PopupProps.menu(
-          constraints: BoxConstraints(
-            maxHeight: height,
-          ),
-          showSelectedItems: true,
-          showSearchBox: isSearch,
-        ),
-        items: items,
-        onChanged: onChang,
-        validator: validat,
-        selectedItem: selected ?? items[0],
-        dropdownDecoratorProps: DropDownDecoratorProps(
-          dropdownSearchDecoration: InputDecoration(
-            border: InputBorder.none,
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: colorBorderFocuse ?? const Color(0xfff7921c),
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: colorBorder ?? const Color(0xff000236),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-
 
 Widget defaultField({
   required String label,
