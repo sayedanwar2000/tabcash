@@ -323,10 +323,10 @@ class HomeScreen extends StatelessWidget {
                     width: 20,
                   ),
                   OurServicesTapedItem(
-                      iconPath: 'assets/svgs/pay_bills_icon.svg',
-                      text: 'Pay',
-                      textLine2: 'bills',
-                      function: (){}
+                    iconPath: "assets/svgs/parent's_control.svg",
+                    text: "Parent’s",
+                    textLine2: 'control',
+                    function: (){},
                   ),
                   SizedBox(
                     width: 20,
