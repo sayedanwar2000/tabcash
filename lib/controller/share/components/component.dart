@@ -194,6 +194,7 @@ Widget defaultButton({
   colorText,
   wid,
   double width = double.infinity,
+  double fontSize = 14,
 }) =>
     Container(
       width: width,
@@ -209,6 +210,7 @@ Widget defaultButton({
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: colorText ?? Colors.white,
+                fontSize: fontSize,
               ),
             ),
       ),
@@ -398,5 +400,32 @@ class SeeMoreTapedItem extends StatelessWidget {
   }
 }
 
+class SettingsContainerComponent extends StatelessWidget {
+
+  final Widget widget;
+  double padding = 12;
+
+  SettingsContainerComponent({
+    required this.widget,
+    this.padding = 12,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: defaultBlackColor00.withOpacity(0.2)
+        ),
+        color: defaultBlackColor00.withOpacity(0.03),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(padding),
+        child: widget,
+      ),
+    );
+  }
+}
 
 
