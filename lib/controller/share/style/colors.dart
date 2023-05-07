@@ -9,3 +9,4 @@ Color defaultColor1E = const Color(0xFF1E1E1E);
 Color defaultColor0D_50 = const Color(0xFF0D47A1).withOpacity(0.5);
 Color defaultColorF9 = const Color(0xFFF9F9F9);
 Color defaultRedColorFF = const Color(0xFFFF1921);
+Color defaultColorBA_50 = const Color(0xFFBAC5FF).withOpacity(0.5);

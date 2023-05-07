@@ -428,4 +428,76 @@ class SettingsContainerComponent extends StatelessWidget {
   }
 }
 
+class ExpensesItemComponent extends StatelessWidget {
+
+  final String iconPath;
+  final String text;
+  final String money;
+  final double percentage;
+
+  const ExpensesItemComponent({
+    required this.iconPath,
+    required this.text,
+    required this.money,
+    required this.percentage,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            CircleAvatar(
+              backgroundColor: defaultColorBA_50,
+              radius: 30,
+              child: SvgPicture.asset(iconPath),
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  text,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                    color: defaultBlackColor00,
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  money,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    color: defaultBlackColor00,
+                  ),
+                ),
+              ],
+            ),
+            Spacer(),
+            Text(
+              '${percentage}%',
+              style: TextStyle(
+                  color: defaultBlueColor0D,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+      ],
+    );
+  }
+}
+
+
 
