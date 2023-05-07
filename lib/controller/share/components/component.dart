@@ -1,8 +1,10 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../views/drawer_header/drawer_header.dart';
 import '../network/local/cache_helper/cache.dart';
+import '../style/colors.dart';
 
 void navigateto(context, Widget Widget) => Navigator.push(
       context,
@@ -250,4 +252,151 @@ Widget defaultField({
         widget,
       ],
     );
+
+class OurServicesIcon extends StatelessWidget {
+
+  final String iconPath;
+  final Function() function;
+
+  OurServicesIcon({
+   required this.iconPath,
+    required this.function
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: InkWell(
+        onTap: function,
+        child: Container(
+          decoration: BoxDecoration(
+              border: Border.all(),
+              borderRadius: BorderRadius.circular(25)
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(14.0),
+            child: SvgPicture.asset(iconPath),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class OurServicesTapedItem extends StatelessWidget {
+
+  final String iconPath;
+  final String text;
+  final String textLine2;
+  final Function() function;
+
+  const OurServicesTapedItem({
+    required this.iconPath,
+    required this.text,
+    required this.textLine2,
+    required this.function
+  });
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 65,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          InkWell(
+            onTap: function,
+            child: Container(
+              height: 65,
+              decoration: BoxDecoration(
+                  color: defaultWhiteColorFF,
+                  borderRadius: BorderRadius.circular(25),
+                  boxShadow: [
+                    BoxShadow(
+                      color: defaultColor1E.withOpacity(0.3),
+                      blurRadius: 15.0, // soften the shadow
+                      offset: Offset(
+                        1.0, // Move to right 5  horizontally
+                        1.0, // Move to bottom 5 Vertically
+                      ),
+                    )
+                  ]
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: SvgPicture.asset(
+                  iconPath,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            text,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: defaultBlueColor0D,
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          Text(
+            textLine2,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: defaultBlueColor0D,
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SeeMoreTapedItem extends StatelessWidget {
+
+  final Widget widget;
+
+  const SeeMoreTapedItem({
+    required this.widget
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: (){
+        navigateto(context, widget);
+      },
+      child: Row(
+        children: [
+          Text(
+            'See more',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: defaultBlackColor00,
+            ),
+          ),
+          SizedBox(
+            width: 2,
+          ),
+          Icon(
+            Icons.arrow_forward_ios,
+            size: 12,
+            color: defaultBlackColor00,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
 
