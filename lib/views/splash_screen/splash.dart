@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:tabcash/views/login_screen/login_screen.dart';
 
 import '../../controller/share/components/component.dart';
 
@@ -14,16 +15,12 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     Timer(
         const Duration(seconds: 3),
-            (){
-          //TODO
-              /*
-              * navigate to first screen
-              */
-          // navigateAndFinish(context, ShowScreen());
+            () {
+          navigateAndFinish(context, const LoginScreen());
         }
     );
   }
@@ -36,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
           start: 20,
           end: 20,
         ),
-        child: Center(child: Image.asset('asset/images/logoname.png')),
+        child: Center(child: Image.asset('assets/images/logo.png',)),
       ),
     );
   }
