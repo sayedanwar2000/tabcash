@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tabcash/controller/share/components/component.dart';
 import 'package:tabcash/controller/share/style/colors.dart';
-import 'package:tabcash/views/expense_weekly_screen/expense_weekly_screen.dart';
 import 'package:tabcash/views/more_screen/more_screen.dart';
+
+import '../expenses_screen/expenses_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -373,7 +374,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           Spacer(),
-                          SeeMoreTapedItem(widget: ExpenseWeeklyScreen())
+                          SeeMoreTapedItem(widget: ExpensesScreen())
                         ],
                       ),
                       SizedBox(
