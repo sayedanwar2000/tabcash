@@ -193,10 +193,10 @@ Widget defaultButton({
   required Color color,
   colorText,
   wid,
-  double? width,
+  double width = double.infinity,
 }) =>
     Container(
-      width: width ?? double.infinity,
+      width: width,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(10),
