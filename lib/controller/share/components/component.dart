@@ -259,10 +259,14 @@ class OurServicesIcon extends StatelessWidget {
 
   final String iconPath;
   final Function() function;
+  final String text;
+  final String textLine2;
 
-  OurServicesIcon({
-   required this.iconPath,
-    required this.function
+  const OurServicesIcon({
+    required this.iconPath,
+    required this.function,
+    required this.text,
+    required this.textLine2,
   });
 
   @override
@@ -271,15 +275,42 @@ class OurServicesIcon extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: InkWell(
         onTap: function,
-        child: Container(
-          decoration: BoxDecoration(
-              border: Border.all(),
-              borderRadius: BorderRadius.circular(25)
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: SvgPicture.asset(iconPath),
-          ),
+        child: Column(
+          children: [
+            Container(
+              height: 65,
+              width: 65,
+              decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(25)
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: SvgPicture.asset(iconPath),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: defaultBlueColor0D,
+                fontSize: 15,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            Text(
+              textLine2,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: defaultBlueColor0D,
+                fontSize: 15,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -499,5 +530,42 @@ class ExpensesItemComponent extends StatelessWidget {
   }
 }
 
+class SwitchedItemComponent extends StatelessWidget {
 
+  final String text;
+  final bool value;
+  final Function(dynamic value) function;
+
+  SwitchedItemComponent({
+    required this.text,
+    required this.value,
+    required this.function,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            text,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              color: defaultBlackColor00,
+            ),
+          ),
+        ),
+        Spacer(),
+        Switch(
+          value: value,
+          activeColor: defaultBlueColor0D,
+          onChanged: function
+        )
+      ],
+    );
+  }
+}
 

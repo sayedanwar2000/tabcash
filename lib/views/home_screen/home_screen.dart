@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tabcash/controller/share/components/component.dart';
 import 'package:tabcash/controller/share/style/colors.dart';
 import 'package:tabcash/views/more_screen/more_screen.dart';
-
+import "package:tabcash/views/parent's_control_screen/parent's_control_screen.dart";
 import '../expenses_screen/expenses_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -327,7 +327,9 @@ class HomeScreen extends StatelessWidget {
                     iconPath: "assets/svgs/parent's_control.svg",
                     text: "Parent’s",
                     textLine2: 'control',
-                    function: (){},
+                    function: (){
+                      navigateto(context, ParentControlScreen());
+                    },
                   ),
                   SizedBox(
                     width: 20,
