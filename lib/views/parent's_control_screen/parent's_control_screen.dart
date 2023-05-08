@@ -2,7 +2,6 @@ import 'package:animate_icons/animate_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:tabcash/controller/cubits/parent_control_cubit.dart';
 import 'package:tabcash/controller/share/components/component.dart';
 import 'package:tabcash/controller/share/style/colors.dart';
@@ -259,5 +258,5 @@ class ParentControlScreen extends StatelessWidget {
       ),
     );
   }
-
+  
 }
