@@ -52,7 +52,7 @@ class ParentControlScreen extends StatelessWidget {
                           Spacer(),
                           InkWell(
                             onTap: (){
-                              
+
                             },
                             child: Container(
                               decoration: BoxDecoration(
