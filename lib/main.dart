@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tabcash/controller/share/style/colors.dart';
+import 'package:tabcash/views/sign_up_screen/sign_up_screen.dart';
 import 'package:tabcash/views/splash_screen/splash.dart';
 
 import 'views/layout/layout_screen.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SplashScreen(),
+      home: SignUpScreen(),
     );
   }
 }
