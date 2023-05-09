@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
+
 
 import '../../controller/share/components/component.dart';
 import '../login_screen/login_screen.dart';
@@ -16,12 +18,14 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     Timer(
+
         const Duration(seconds: 4),
             (){
           navigateAndFinish(context, LoginScreen());
+
         }
     );
   }
@@ -40,6 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Center(child: SvgPicture.asset('assets/images/logo.svg')),
           ],
         ),
+
       ),
     );
   }
