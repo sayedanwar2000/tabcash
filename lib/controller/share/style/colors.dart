@@ -13,4 +13,7 @@ Color defaultColorBA_50 = const Color(0xFFBAC5FF).withOpacity(0.5);
 Color defaultColor15_76 = const Color(0xFF1595EB).withOpacity(0.76);
 Color defaultColorDD = const Color(0xFFDDE2FF);
 Color defaultColorED = const Color(0xFFEDEFF7);
+Color defaultColorD9 = const Color(0xFFD9D9D9);
+Color defaultColor44 = const Color(0xFF444444);
+Color defaultColorGrey = Colors.grey;
 Color defaultColorB8_30 = const Color(0xFFB8D2FF).withOpacity(0.30);
