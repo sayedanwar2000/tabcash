@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,18 +7,18 @@ import '../network/local/cache_helper/cache.dart';
 import '../style/colors.dart';
 
 void navigateto(context, Widget Widget) => Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => Widget,
-      ),
-    );
+  context,
+  MaterialPageRoute(
+    builder: (context) => Widget,
+  ),
+);
 
 void navigateAndFinish(context, Widget Widget) => Navigator.pushAndRemoveUntil(
     context,
     MaterialPageRoute(
       builder: (context) => Widget,
     ),
-    (route) => false);
+        (route) => false);
 
 Widget defaultTextFormField({
   required TextEditingController controll,
@@ -37,6 +37,10 @@ Widget defaultTextFormField({
   maxline = 1,
   dynamic colorBorderFocuse,
   dynamic colorBorder,
+  textAlign,
+  border,
+  hintStyle,
+  textStyle
 }) =>
     TextFormField(
       maxLines: maxline,
@@ -48,10 +52,12 @@ Widget defaultTextFormField({
       onChanged: onChange,
       onFieldSubmitted: onSubmit,
       onTap: ontap,
+      textAlign: textAlign??TextAlign.start,
+      style: textStyle,
       decoration: InputDecoration(
         labelText: label,
         hintText: hintText,
-        focusedBorder: OutlineInputBorder(
+        /*focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: colorBorderFocuse ?? const Color(0xfff7921c),
           ),
@@ -60,20 +66,20 @@ Widget defaultTextFormField({
           borderSide: BorderSide(
             color: colorBorder ?? const Color(0xff000236),
           ),
-        ),
-        hintStyle: const TextStyle(color: Colors.grey),
+        ),*/
+        hintStyle: hintStyle,
         prefixIcon: prefix != null
             ? Icon(
-                prefix,
-              )
+          prefix,
+        )
             : null,
         suffixIcon: suffix != null
             ? IconButton(
-                onPressed: suffixPressed,
-                icon: Icon(suffix),
-              )
+          onPressed: suffixPressed,
+          icon: Icon(suffix),
+        )
             : null,
-        border: const OutlineInputBorder(),
+        border: border ??  const OutlineInputBorder(),
       ),
     );
 
@@ -231,11 +237,13 @@ Widget defaultTextButton({
 
 Widget myDivider({
   double? Width,
+  color,
+  height,
 }) =>
     Container(
       width: Width ?? double.infinity,
-      height: 2.0,
-      color: Colors.grey[300],
+      height: height?? 2.0,
+      color: color ?? Colors.grey[300],
     );
 
 Widget defaultField({
@@ -262,7 +270,7 @@ class OurServicesIcon extends StatelessWidget {
   final String text;
   final String textLine2;
 
-  const OurServicesIcon({
+  const OurServicesIcon({super.key,
     required this.iconPath,
     required this.function,
     required this.text,
@@ -289,7 +297,8 @@ class OurServicesIcon extends StatelessWidget {
                 child: SvgPicture.asset(iconPath),
               ),
             ),
-            SizedBox(
+
+            const SizedBox(
               height: 10,
             ),
             Text(
@@ -324,7 +333,8 @@ class OurServicesTapedItem extends StatelessWidget {
   final String textLine2;
   final Function() function;
 
-  const OurServicesTapedItem({
+
+  const OurServicesTapedItem({super.key,
     required this.iconPath,
     required this.text,
     required this.textLine2,
@@ -351,7 +361,8 @@ class OurServicesTapedItem extends StatelessWidget {
                     BoxShadow(
                       color: defaultColor1E.withOpacity(0.3),
                       blurRadius: 15.0, // soften the shadow
-                      offset: Offset(
+
+                      offset: const Offset(
                         1.0, // Move to right 5  horizontally
                         1.0, // Move to bottom 5 Vertically
                       ),
@@ -366,7 +377,7 @@ class OurServicesTapedItem extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Text(
@@ -397,7 +408,7 @@ class SeeMoreTapedItem extends StatelessWidget {
 
   final Widget widget;
 
-  const SeeMoreTapedItem({
+  const SeeMoreTapedItem({super.key,
     required this.widget
   });
 
@@ -417,7 +428,7 @@ class SeeMoreTapedItem extends StatelessWidget {
               color: defaultBlackColor00,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 2,
           ),
           Icon(
@@ -436,7 +447,8 @@ class SettingsContainerComponent extends StatelessWidget {
   final Widget widget;
   double padding = 12;
 
-  SettingsContainerComponent({
+
+  SettingsContainerComponent({super.key,
     required this.widget,
     this.padding = 12,
   });
@@ -446,7 +458,9 @@ class SettingsContainerComponent extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: defaultBlackColor00.withOpacity(0.2)
+
+            color: defaultBlackColor00.withOpacity(0.2)
+
         ),
         color: defaultBlackColor00.withOpacity(0.03),
         borderRadius: BorderRadius.circular(10),
@@ -466,7 +480,8 @@ class ExpensesItemComponent extends StatelessWidget {
   final String money;
   final double percentage;
 
-  const ExpensesItemComponent({
+
+  const ExpensesItemComponent({super.key,
     required this.iconPath,
     required this.text,
     required this.money,
@@ -484,7 +499,7 @@ class ExpensesItemComponent extends StatelessWidget {
               radius: 30,
               child: SvgPicture.asset(iconPath),
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             Column(
@@ -498,7 +513,9 @@ class ExpensesItemComponent extends StatelessWidget {
                     color: defaultBlackColor00,
                   ),
                 ),
-                SizedBox(
+
+                const SizedBox(
+
                   height: 5,
                 ),
                 Text(
@@ -511,9 +528,10 @@ class ExpensesItemComponent extends StatelessWidget {
                 ),
               ],
             ),
-            Spacer(),
+
+            const Spacer(),
             Text(
-              '${percentage}%',
+              '$percentage%',
               style: TextStyle(
                   color: defaultBlueColor0D,
                   fontSize: 24,
@@ -522,7 +540,8 @@ class ExpensesItemComponent extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
+
           height: 15,
         ),
       ],
@@ -535,8 +554,8 @@ class SwitchedItemComponent extends StatelessWidget {
   final String text;
   final bool value;
   final Function(dynamic value) function;
+  const SwitchedItemComponent({super.key,
 
-  SwitchedItemComponent({
     required this.text,
     required this.value,
     required this.function,
@@ -558,11 +577,12 @@ class SwitchedItemComponent extends StatelessWidget {
             ),
           ),
         ),
-        Spacer(),
+        const Spacer(),
         Switch(
-          value: value,
-          activeColor: defaultBlueColor0D,
-          onChanged: function
+            value: value,
+            activeColor: defaultBlueColor0D,
+            onChanged: function
+
         )
       ],
     );
