@@ -1,9 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:tabcash/views/login_screen/login_screen.dart';
+
+import 'package:flutter_svg/flutter_svg.dart';
+
 
 import '../../controller/share/components/component.dart';
+import '../login_screen/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -18,9 +21,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        const Duration(seconds: 3),
-            () {
-          navigateAndFinish(context, const LoginScreen());
+
+        const Duration(seconds: 4),
+            (){
+          navigateAndFinish(context, LoginScreen());
+
         }
     );
   }
@@ -28,12 +33,18 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsetsDirectional.only(
-          start: 20,
-          end: 20,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            SvgPicture.asset(
+              'assets/images/background_stars.svg',
+              width: double.infinity,
+              height: double.infinity,
+            ),
+            Center(child: SvgPicture.asset('assets/images/logo.svg')),
+          ],
         ),
-        child: Center(child: Image.asset('assets/images/logo.png',)),
+
       ),
     );
   }

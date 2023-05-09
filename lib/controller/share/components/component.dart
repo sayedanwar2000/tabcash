@@ -1,8 +1,10 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../views/drawer_header/drawer_header.dart';
 import '../network/local/cache_helper/cache.dart';
+import '../style/colors.dart';
 
 void navigateto(context, Widget Widget) => Navigator.push(
       context,
@@ -191,10 +193,11 @@ Widget defaultButton({
   required Color color,
   colorText,
   wid,
-  double? width,
+  double width = double.infinity,
+  double fontSize = 14,
 }) =>
     Container(
-      width: width ?? double.infinity,
+      width: width,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(10),
@@ -207,6 +210,7 @@ Widget defaultButton({
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: colorText ?? Colors.white,
+                fontSize: fontSize,
               ),
             ),
       ),
@@ -250,4 +254,318 @@ Widget defaultField({
         widget,
       ],
     );
+
+class OurServicesIcon extends StatelessWidget {
+
+  final String iconPath;
+  final Function() function;
+  final String text;
+  final String textLine2;
+
+  const OurServicesIcon({
+    required this.iconPath,
+    required this.function,
+    required this.text,
+    required this.textLine2,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: InkWell(
+        onTap: function,
+        child: Column(
+          children: [
+            Container(
+              height: 65,
+              width: 65,
+              decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(25)
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: SvgPicture.asset(iconPath),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: defaultBlueColor0D,
+                fontSize: 15,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            Text(
+              textLine2,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: defaultBlueColor0D,
+                fontSize: 15,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class OurServicesTapedItem extends StatelessWidget {
+
+  final String iconPath;
+  final String text;
+  final String textLine2;
+  final Function() function;
+
+  const OurServicesTapedItem({
+    required this.iconPath,
+    required this.text,
+    required this.textLine2,
+    required this.function
+  });
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 65,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          InkWell(
+            onTap: function,
+            child: Container(
+              height: 65,
+              decoration: BoxDecoration(
+                  color: defaultWhiteColorFF,
+                  borderRadius: BorderRadius.circular(25),
+                  boxShadow: [
+                    BoxShadow(
+                      color: defaultColor1E.withOpacity(0.3),
+                      blurRadius: 15.0, // soften the shadow
+                      offset: Offset(
+                        1.0, // Move to right 5  horizontally
+                        1.0, // Move to bottom 5 Vertically
+                      ),
+                    )
+                  ]
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: SvgPicture.asset(
+                  iconPath,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            text,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: defaultBlueColor0D,
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          Text(
+            textLine2,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: defaultBlueColor0D,
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SeeMoreTapedItem extends StatelessWidget {
+
+  final Widget widget;
+
+  const SeeMoreTapedItem({
+    required this.widget
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: (){
+        navigateto(context, widget);
+      },
+      child: Row(
+        children: [
+          Text(
+            'See more',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: defaultBlackColor00,
+            ),
+          ),
+          SizedBox(
+            width: 2,
+          ),
+          Icon(
+            Icons.arrow_forward_ios,
+            size: 12,
+            color: defaultBlackColor00,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SettingsContainerComponent extends StatelessWidget {
+
+  final Widget widget;
+  double padding = 12;
+
+  SettingsContainerComponent({
+    required this.widget,
+    this.padding = 12,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: defaultBlackColor00.withOpacity(0.2)
+        ),
+        color: defaultBlackColor00.withOpacity(0.03),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(padding),
+        child: widget,
+      ),
+    );
+  }
+}
+
+class ExpensesItemComponent extends StatelessWidget {
+
+  final String iconPath;
+  final String text;
+  final String money;
+  final double percentage;
+
+  const ExpensesItemComponent({
+    required this.iconPath,
+    required this.text,
+    required this.money,
+    required this.percentage,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            CircleAvatar(
+              backgroundColor: defaultColorBA_50,
+              radius: 30,
+              child: SvgPicture.asset(iconPath),
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  text,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                    color: defaultBlackColor00,
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  money,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    color: defaultBlackColor00,
+                  ),
+                ),
+              ],
+            ),
+            Spacer(),
+            Text(
+              '${percentage}%',
+              style: TextStyle(
+                  color: defaultBlueColor0D,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+      ],
+    );
+  }
+}
+
+class SwitchedItemComponent extends StatelessWidget {
+
+  final String text;
+  final bool value;
+  final Function(dynamic value) function;
+
+  SwitchedItemComponent({
+    required this.text,
+    required this.value,
+    required this.function,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            text,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              color: defaultBlackColor00,
+            ),
+          ),
+        ),
+        Spacer(),
+        Switch(
+          value: value,
+          activeColor: defaultBlueColor0D,
+          onChanged: function
+        )
+      ],
+    );
+  }
+}
 
