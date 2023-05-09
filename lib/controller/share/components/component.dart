@@ -297,6 +297,7 @@ class OurServicesIcon extends StatelessWidget {
                 child: SvgPicture.asset(iconPath),
               ),
             ),
+
             const SizedBox(
               height: 10,
             ),
@@ -332,6 +333,7 @@ class OurServicesTapedItem extends StatelessWidget {
   final String textLine2;
   final Function() function;
 
+
   const OurServicesTapedItem({super.key,
     required this.iconPath,
     required this.text,
@@ -359,6 +361,7 @@ class OurServicesTapedItem extends StatelessWidget {
                     BoxShadow(
                       color: defaultColor1E.withOpacity(0.3),
                       blurRadius: 15.0, // soften the shadow
+
                       offset: const Offset(
                         1.0, // Move to right 5  horizontally
                         1.0, // Move to bottom 5 Vertically
@@ -444,6 +447,7 @@ class SettingsContainerComponent extends StatelessWidget {
   final Widget widget;
   double padding = 12;
 
+
   SettingsContainerComponent({super.key,
     required this.widget,
     this.padding = 12,
@@ -454,7 +458,9 @@ class SettingsContainerComponent extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
+
             color: defaultBlackColor00.withOpacity(0.2)
+
         ),
         color: defaultBlackColor00.withOpacity(0.03),
         borderRadius: BorderRadius.circular(10),
@@ -473,6 +479,7 @@ class ExpensesItemComponent extends StatelessWidget {
   final String text;
   final String money;
   final double percentage;
+
 
   const ExpensesItemComponent({super.key,
     required this.iconPath,
@@ -506,7 +513,9 @@ class ExpensesItemComponent extends StatelessWidget {
                     color: defaultBlackColor00,
                   ),
                 ),
+
                 const SizedBox(
+
                   height: 5,
                 ),
                 Text(
@@ -519,6 +528,7 @@ class ExpensesItemComponent extends StatelessWidget {
                 ),
               ],
             ),
+
             const Spacer(),
             Text(
               '$percentage%',
@@ -531,6 +541,7 @@ class ExpensesItemComponent extends StatelessWidget {
           ],
         ),
         const SizedBox(
+
           height: 15,
         ),
       ],
@@ -543,8 +554,8 @@ class SwitchedItemComponent extends StatelessWidget {
   final String text;
   final bool value;
   final Function(dynamic value) function;
-
   const SwitchedItemComponent({super.key,
+
     required this.text,
     required this.value,
     required this.function,
@@ -571,6 +582,7 @@ class SwitchedItemComponent extends StatelessWidget {
             value: value,
             activeColor: defaultBlueColor0D,
             onChanged: function
+
         )
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tabcash/controller/share/style/colors.dart';
 import 'package:tabcash/views/splash_screen/splash.dart';
 
 // import 'views/layout/layout_screen.dart';
