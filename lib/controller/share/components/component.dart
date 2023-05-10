@@ -231,7 +231,7 @@ Widget defaultTextButton({
       onPressed: function,
       child: Text(
         text,
-        //style: textstyle,
+        style: textstyle,
       ),
     );
 

@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tabcash/controller/cubits/sign_up_cubit.dart';
 import 'package:tabcash/controller/share/style/colors.dart';
 import 'package:tabcash/controller/states/sign_up_states.dart';
+import 'package:tabcash/views/login_screen/login_screen.dart';
 
 import '../../controller/share/components/component.dart';
 
@@ -318,6 +319,39 @@ class SignUpScreen extends StatelessWidget {
                                 },
                                 color: defaultBlueColor0D ,
                                 text: 'Sign up',
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Do you have an account?',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: defaultBlackColor00,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  defaultTextButton(
+                                    function: (){
+                                      navigateto(context, LoginScreen());
+                                    },
+                                    text: 'Sign in' ,
+                                    textstyle: TextStyle(
+                                      color: defaultBlueColor0D,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                ],
                               ),
                             ],
                           ),
