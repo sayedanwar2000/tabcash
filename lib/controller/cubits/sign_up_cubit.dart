@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tabcash/controller/share/network/endpointer.dart';
 
+import '../../models/user_model.dart';
+import '../share/network/remote/dio_helper.dart';
 import '../states/sign_up_states.dart';
 
 class SignUpCubit extends Cubit<SignUpStates>  {
@@ -23,4 +26,41 @@ class SignUpCubit extends Cubit<SignUpStates>  {
     emit(ChangeGenderValueState());
   }
 
+  void register({
+    required String firstName ,
+    required String lastName,
+    required String username,
+    required String email,
+    required String password,
+    required String address,
+    required String gender,
+    required String phone,
+    required String nationalId,
+  }){
+    emit(SignUpLoadingState());
+    DioHelper.postData(
+        url: Register ,
+        data:
+        {
+          'firstName' : firstName,
+          'lastName': lastName,
+          'username' : username,
+          'email' : email,
+          'password' : password,
+          'address' : address,
+          'gender' : gender,
+          'phone' : phone,
+          'nationalId' : nationalId
+        }
+    ).then((value) {
+      print(value.data);
+      UserModel userModel = UserModel.fromJson(value.data);
+      print(userModel?.message);
+      print(userModel?.error);
+      emit(SignUpSuccessState());
+    }).catchError((error) {
+      print(error.toString());
+      emit(SignUpErrorState(error.toString()));
+    });
+  }
 }

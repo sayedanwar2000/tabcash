@@ -12,7 +12,7 @@ class LoginCubit extends Cubit<LoginStates> {
   bool isPassword = true;
   // late UserModel loginModel;
 
-  void userLogin({
+  void login({
     required String email,
     required String password,
   }){
@@ -20,7 +20,7 @@ class LoginCubit extends Cubit<LoginStates> {
     DioHelper.postData(
       url: Login,
       data: {
-        'username' : email,
+        'email' : email,
         'password' : password,
       },
     ).then((value) {

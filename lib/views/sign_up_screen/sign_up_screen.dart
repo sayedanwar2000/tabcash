@@ -27,7 +27,18 @@ class SignUpScreen extends StatelessWidget {
       create: (context) => SignUpCubit(),
       child: BlocConsumer<SignUpCubit , SignUpStates>(
         listener: (context, state) {
-
+          if(state is SignUpSuccessState){
+            if(state.shopLoginModel.status){
+                navigateto(context, LoginScreen());
+              });
+            }else{
+              // print(state.shopLoginModel.message);
+              showToast(
+                  text: state.shopLoginModel.message.toString(),
+                  toastStates: ToastStates.ERROR
+              );
+            }
+          }
         },
         builder: (context, state) {
           SignUpCubit cubit = SignUpCubit.get(context);

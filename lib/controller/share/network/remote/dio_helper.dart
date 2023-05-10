@@ -6,7 +6,7 @@ class DioHelper {
   static init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'https://masmix.com/api/',
+        baseUrl: 'http://10.5.62.24:4000',
         receiveDataWhenStatusError: true,
       ),
     );
