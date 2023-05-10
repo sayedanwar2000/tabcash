@@ -589,3 +589,79 @@ class SwitchedItemComponent extends StatelessWidget {
   }
 }
 
+class TextComponent extends StatelessWidget {
+
+  final String text;
+  final Color color;
+
+  TextComponent({
+    required this.text,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Text(
+      text,
+      style: TextStyle(
+        fontWeight: FontWeight.w400,
+        fontSize: 16,
+        color: color,
+      ),
+    );
+  }
+}
+
+class TextFormFiledComponentItem extends StatelessWidget {
+
+  final TextEditingController controller;
+  final String hint;
+  final String? Function(String? value) validator;
+  IconData? suffixIcon;
+  Function()? onPressedSuffixIcon;
+  bool ? obscureText = false;
+
+  TextFormFiledComponentItem({
+    required this.controller,
+    required this.hint,
+    required this.validator,
+    this.suffixIcon,
+    this.obscureText = false,
+    this.onPressedSuffixIcon,
+  });
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          height: 10,
+        ),
+        TextFormField(
+          controller: controller,
+          decoration: InputDecoration(
+            hintText: hint,
+            hintStyle: TextStyle(
+              color: defaultBlackColor00.withOpacity(0.5),
+            ),
+            border: InputBorder.none,
+            filled: true,
+            fillColor: defaultColorEC,
+            suffixIcon: IconButton(
+              onPressed: onPressedSuffixIcon,
+              icon: Icon(
+                suffixIcon,
+              ),
+            ),
+          ),
+          obscureText: obscureText!,
+
+          validator: validator ,
+        ),
+      ],
+    );
+  }
+}
+
