@@ -314,9 +314,7 @@ class SignUpScreen extends StatelessWidget {
                                 height: 20,
                               ),
                               defaultButton(
-                                function: (){
-
-                                },
+                                function: (){},
                                 color: defaultBlueColor0D ,
                                 text: 'Sign up',
                               ),

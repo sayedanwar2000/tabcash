@@ -6,6 +6,7 @@ import 'package:tabcash/controller/states/login_states.dart';
 import 'package:tabcash/views/sign_up_screen/sign_up_screen.dart';
 import '../../controller/share/components/component.dart';
 import '../../controller/share/style/colors.dart';
+import '../layout/layout_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -122,7 +123,9 @@ class LoginScreen extends StatelessWidget {
                       height: 50,
                     ),
                     defaultButton(
-                      function: (){},
+                      function: (){
+                        navigateAndFinish(context, LayoutScreen());
+                      },
                       color: defaultBlueColor0D,
                       text: 'Login',
                     ),
