@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tabcash/controller/share/network/endpointer.dart';
 
-import '../../models/user_model.dart';
+import '../../models/register_model.dart';
 import '../share/network/remote/dio_helper.dart';
 import '../states/sign_up_states.dart';
 
@@ -14,6 +14,7 @@ class SignUpCubit extends Cubit<SignUpStates>  {
   IconData suffix = Icons.visibility_outlined;
   bool isPassword = true;
   String ? gender;
+  DateTime ? selectedDate;
 
   void changePasswordVisibility(){
     isPassword = !isPassword;
@@ -26,6 +27,11 @@ class SignUpCubit extends Cubit<SignUpStates>  {
     emit(ChangeGenderValueState());
   }
 
+  void selectBirthDate(DateTime dateTime){
+    selectedDate = dateTime;
+    emit(SelectDateOfBirthState());
+  }
+
   void register({
     required String firstName ,
     required String lastName,
@@ -36,6 +42,7 @@ class SignUpCubit extends Cubit<SignUpStates>  {
     required String gender,
     required String phone,
     required String nationalId,
+    required String dateOfBirth,
   }){
     emit(SignUpLoadingState());
     DioHelper.postData(
@@ -50,11 +57,12 @@ class SignUpCubit extends Cubit<SignUpStates>  {
           'address' : address,
           'gender' : gender,
           'phone' : phone,
-          'nationalId' : nationalId
+          'nationalId' : nationalId,
+          'dob' : dateOfBirth
         }
     ).then((value) {
       print(value.data);
-      UserModel userModel = UserModel.fromJson(value.data);
+      RegisterModel userModel = RegisterModel.fromJson(value.data);
       print(userModel?.message);
       print(userModel?.error);
       emit(SignUpSuccessState(userModel: userModel));

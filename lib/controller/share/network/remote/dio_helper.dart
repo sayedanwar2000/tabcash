@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import '../ipv4.dart';
 
 class DioHelper {
   static late Dio dio;
@@ -6,7 +7,7 @@ class DioHelper {
   static init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'http://10.5.62.24:4000',
+        baseUrl: 'http://${IPV4}:4000',
         receiveDataWhenStatusError: true,
       ),
     );

@@ -265,6 +265,39 @@ class SignUpScreen extends StatelessWidget {
                               SizedBox(
                                 height: 15,
                               ),
+                              Row(
+                                children: [
+                                  TextComponent(
+                                    color: defaultBlackColor00,
+                                    text: 'Birthdate',
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    cubit.selectedDate == null ? '' : '${cubit.selectedDate!.year} / ${cubit.selectedDate!.month} / ${cubit.selectedDate!.day}',
+                                  ),
+                                  Spacer(),
+                                  defaultButton(
+                                    function: ()async{
+                                      cubit.selectedDate = await showDatePicker(
+                                        context: context,
+                                        initialDate: DateTime(2000),
+                                        firstDate: DateTime(1950),
+                                        lastDate: DateTime.now(),
+                                      );
+                                      cubit.selectBirthDate(cubit.selectedDate!);
+                                    },
+                                    text: 'Select',
+                                    width: 100,
+                                    fontSize: 14,
+                                    color: defaultBlueColor0D,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
                               TextComponent(
                                 text: 'Notation ID',
                                 color: defaultBlackColor00,
@@ -333,6 +366,7 @@ class SignUpScreen extends StatelessWidget {
                                       gender: cubit.gender!,
                                       phone: phoneController.text,
                                       nationalId: notationIdController.text,
+                                      dateOfBirth: '${cubit.selectedDate!.year}-${cubit.selectedDate!.month}-${cubit.selectedDate!.day}'
                                     );
                                   }
                                 },
