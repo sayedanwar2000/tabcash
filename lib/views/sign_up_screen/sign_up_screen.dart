@@ -11,6 +11,7 @@ import '../../controller/share/components/component.dart';
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
 
+  var formKey = GlobalKey<FormState>();
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController userNameController = TextEditingController();
@@ -29,6 +30,9 @@ class SignUpScreen extends StatelessWidget {
         listener: (context, state) {
           if(state is SignUpSuccessState){
             navigateto(context, LoginScreen());
+          }
+          else if(state is SignUpErrorState){
+            showToast(text: state.error, toastStates: ToastStates.ERROR);
           }
         },
         builder: (context, state) {
@@ -93,6 +97,7 @@ class SignUpScreen extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(18.0),
                         child: Form(
+                          key: formKey,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -231,7 +236,7 @@ class SignUpScreen extends StatelessWidget {
                                 color: defaultBlackColor00,
                               ),
                               TextFormFiledComponentItem(
-                                controller: passwordController,
+                                controller: addressController,
                                 hint: 'Type your address',
                                 validator: (value){
                                   if(value!.isEmpty){
@@ -248,7 +253,7 @@ class SignUpScreen extends StatelessWidget {
                                 color: defaultBlackColor00,
                               ),
                               TextFormFiledComponentItem(
-                                controller: passwordController,
+                                controller: phoneController,
                                 hint: 'Type your phone',
                                 validator: (value){
                                   if(value!.isEmpty){
@@ -265,7 +270,7 @@ class SignUpScreen extends StatelessWidget {
                                 color: defaultBlackColor00,
                               ),
                               TextFormFiledComponentItem(
-                                controller: passwordController,
+                                controller: notationIdController,
                                 hint: 'Type your notation id',
                                 validator: (value){
                                   if(value!.isEmpty){
@@ -316,7 +321,21 @@ class SignUpScreen extends StatelessWidget {
                                 height: 20,
                               ),
                               defaultButton(
-                                function: (){},
+                                function: (){
+                                  if(formKey.currentState!.validate()){
+                                    cubit.register(
+                                      firstName: firstNameController.text,
+                                      lastName: lastNameController.text,
+                                      username: userNameController.text,
+                                      email: emailController.text,
+                                      password: passwordController.text,
+                                      address: addressController.text,
+                                      gender: cubit.gender!,
+                                      phone: phoneController.text,
+                                      nationalId: notationIdController.text,
+                                    );
+                                  }
+                                },
                                 color: defaultBlueColor0D ,
                                 text: 'Sign up',
                               ),

@@ -57,7 +57,7 @@ class SignUpCubit extends Cubit<SignUpStates>  {
       UserModel userModel = UserModel.fromJson(value.data);
       print(userModel?.message);
       print(userModel?.error);
-      emit(SignUpSuccessState());
+      emit(SignUpSuccessState(userModel: userModel));
     }).catchError((error) {
       print(error.toString());
       emit(SignUpErrorState(error.toString()));
