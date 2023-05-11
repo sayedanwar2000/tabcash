@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../models/user_model.dart';
 import '../share/network/endpointer.dart';
 import '../share/network/remote/dio_helper.dart';
 import '../states/login_states.dart';
@@ -10,7 +11,7 @@ class LoginCubit extends Cubit<LoginStates> {
   static LoginCubit get(context) => BlocProvider.of(context);
   IconData suffix = Icons.visibility_outlined;
   bool isPassword = true;
-  // late UserModel loginModel;
+  late UserModel loginModel;
 
   void login({
     required String email,
@@ -24,15 +25,15 @@ class LoginCubit extends Cubit<LoginStates> {
         'password' : password,
       },
     ).then((value) {
-      if(value.data.runtimeType == String) {
-        emit(LoginErrorState(value.data));
-      } else {
-        // loginModel = UserModel.fromJson(value.data);
-        emit(LoginSuccessState());
-      }
-    }).catchError((error){
-      // print(error.toString());
-      emit(LoginErrorState(error.toString()));
+      print(value.data);
+      loginModel = UserModel.fromJson(value.data);
+      print(loginModel?.message);
+      // print(loginModel?.status);
+      print(loginModel?.data?.accessToken);
+      emit(LoginSuccessState(userModel: loginModel!));
+    }).catchError((error) {
+      print(error.toString());
+      emit(LoginErrorState(error: error.toString()));
     });
   }
 
