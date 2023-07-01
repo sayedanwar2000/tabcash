@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../../../views/drawer_header/drawer_header.dart';
 import '../network/local/cache_helper/cache.dart';
 import '../style/colors.dart';
@@ -231,7 +232,7 @@ Widget defaultTextButton({
       onPressed: function,
       child: Text(
         text,
-        //style: textstyle,
+        style: textstyle,
       ),
     );
 
@@ -589,3 +590,111 @@ class SwitchedItemComponent extends StatelessWidget {
   }
 }
 
+class TextComponent extends StatelessWidget {
+
+  final String text;
+  final Color color;
+
+  TextComponent({
+    required this.text,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Text(
+      text,
+      style: TextStyle(
+        fontWeight: FontWeight.w400,
+        fontSize: 16,
+        color: color,
+      ),
+    );
+  }
+}
+
+class TextFormFiledComponentItem extends StatelessWidget {
+
+  final TextEditingController controller;
+  final String hint;
+  final String? Function(String? value) validator;
+  IconData? suffixIcon;
+  Function()? onPressedSuffixIcon;
+  bool ? obscureText = false;
+
+  TextFormFiledComponentItem({
+    required this.controller,
+    required this.hint,
+    required this.validator,
+    this.suffixIcon,
+    this.obscureText = false,
+    this.onPressedSuffixIcon,
+  });
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          height: 10,
+        ),
+        TextFormField(
+          controller: controller,
+          decoration: InputDecoration(
+            hintText: hint,
+            hintStyle: TextStyle(
+              color: defaultBlackColor00.withOpacity(0.5),
+            ),
+            border: InputBorder.none,
+            filled: true,
+            fillColor: defaultColorEC,
+            suffixIcon: IconButton(
+              onPressed: onPressedSuffixIcon,
+              icon: Icon(
+                suffixIcon,
+              ),
+            ),
+          ),
+          obscureText: obscureText!,
+
+          validator: validator ,
+        ),
+      ],
+    );
+  }
+}
+
+void showToast({
+  required String text,
+  required ToastStates toastStates
+}){
+  Fluttertoast.showToast(
+      msg: text,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 5,
+      backgroundColor: chooseToastColor(toastStates),
+      textColor: Colors.white,
+      fontSize: 16.0
+  );
+}
+
+enum ToastStates{ SUCCESS , ERROR , WARNING }
+
+Color chooseToastColor(ToastStates toastStates){
+  late Color color;
+  switch(toastStates){
+    case ToastStates.SUCCESS:
+      color = Colors.green;
+      break;
+    case ToastStates.ERROR:
+      color = Colors.red;
+      break;
+    case ToastStates.WARNING:
+      color = Colors.amber;
+      break;
+  }
+  return color;
+}

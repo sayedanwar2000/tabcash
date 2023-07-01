@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tabcash/controller/share/style/colors.dart';
-
 import '../../controller/cubits/layout_cubit.dart';
 import '../../controller/states/layout_states.dart';
 

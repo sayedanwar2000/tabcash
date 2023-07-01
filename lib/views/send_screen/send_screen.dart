@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable, non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'package:tabcash/controller/share/components/component.dart';
 import 'package:tabcash/controller/share/style/colors.dart';
@@ -161,11 +159,11 @@ class SendScreen extends StatelessWidget {
                           return Row(
                             children: [
                               CircleAvatar(
-                                radius: 35,
+                                radius: 30,
                                 backgroundColor: defaultColorD9,
                                 child: Icon(
                                   Icons.person_outline,
-                                  size: 40,
+                                  size: 35,
                                   color: defaultColor44,
                                 ),
                               ),
@@ -206,15 +204,13 @@ class SendScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(
-              bottom: 20,
-            ),
+            padding: const EdgeInsets.symmetric(vertical: 20 , horizontal: 35),
             child: defaultButton(
               function: () {},
               color: defaultBlueColor0D,
               text: 'Send',
               colorText: Colors.white,
-              width: 140.0,
+              // width: 140.0,
             ),
           ),
         ],

@@ -1,35 +1,27 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:tabcash/controller/share/style/colors.dart';
+import 'package:tabcash/views/layout/layout_screen.dart';
+import 'package:tabcash/views/login_screen/login_screen.dart';
+import 'package:tabcash/views/sign_up_screen/sign_up_screen.dart';
 import 'package:tabcash/views/splash_screen/splash.dart';
 
-// import 'views/layout/layout_screen.dart';
+import 'controller/bloc_observer.dart';
+import 'controller/share/network/remote/dio_helper.dart';
+
 
 void main() {
+  DioHelper.init();
+  Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const SplashScreen(),
+      home: SplashScreen(),
     );
   }
 }

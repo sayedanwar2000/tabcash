@@ -49,6 +49,7 @@ dependencies:
   rflutter_alert: ^2.0.4
   animated_theme_switcher: ^2.0.8
   animate_icons: ^2.0.0
+  fluttertoast: ^8.2.1
 
 dev_dependencies:
   flutter_test:
@@ -67,9 +68,9 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/images
-    - assets/svgs
-    - assets/lottie
+    - assets/images/
+    - assets/svgs/
+#    - assets/lottie
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
